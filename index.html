@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Sai Travels - Comfortable Tours in Maharashtra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B00',
+                        secondary: '#1E3A8A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .floating-btn {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        .floating-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #FF6B00;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .active:after {
+            width: 100%;
+        }
+        .tour-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
+        <a href="tel:+919145112211" class="floating-btn bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/9145112211" class="floating-btn bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-bus text-primary text-2xl"></i>
+                    <span class="text-xl font-bold text-secondary">Om Sai Travels</span>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active text-gray-800 font-medium">Home</a>
+                    <a href="#gallery" class="nav-link text-gray-800 font-medium">Gallery</a>
+                    <a href="#tours" class="nav-link text-gray-800 font-medium">Upcoming Tours</a>
+                    <a href="#about" class="nav-link text-gray-800 font-medium">About</a>
+                    <a href="#contact" class="nav-link text-gray-800 font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="nav-link active text-gray-800 font-medium py-2">Home</a>
+                <a href="#gallery" class="nav-link text-gray-800 font-medium py-2">Gallery</a>
+                <a href="#tours" class="nav-link text-gray-800 font-medium py-2">Upcoming Tours</a>
+                <a href="#about" class="nav-link text-gray-800 font-medium py-2">About</a>
+                <a href="#contact" class="nav-link text-gray-800 font-medium py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-16 md:py-24 bg-gradient-to-r from-blue-50 to-orange-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-secondary mb-6 leading-tight">
+                        Explore India in Comfort <br>
+                        <span class="text-primary">Book Your Journey with Om Sai Travels</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Experience smooth, safe, and memorable journeys with Om Sai Travels! Travel across Maharashtra and all over India in our premium 17-seater Force Urbania luxury bus — equipped with full AC, reclining pushback seats, spacious interiors, and a trusted, professional driver.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="tel:+919145112211" class="bg-primary hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300">
+                            <i class="fas fa-phone mr-2"></i> Call Now
+                        </a>
+                        <a href="#tours" class="bg-secondary hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300">
+                            <i class="fas fa-calendar-alt mr-2"></i> View Tours
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+    <img id="slideshow" 
+         src="urbaniafn.jpg" 
+         alt="Om Sai Travels Bus" 
+         class="rounded-lg shadow-lg w-full border-4 border-white">
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-secondary mb-12">Why Choose Om Sai Travels?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-snowflake text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">AC Comfort</h3>
+                    <p class="text-gray-600">Fully air-conditioned bus to keep you cool during your journey.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chair text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Pushback Seats</h3>
+                    <p class="text-gray-600">Comfortable pushback seats for a relaxing travel experience.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300 text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Safe Travel</h3>
+                    <p class="text-gray-600">Experienced and trusted drivers for your safety and comfort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-secondary mb-4">Our Travel Gallery</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Explore Our Past Journeys – Beautiful Moments Captured from Our Tours with Om Sai Travels.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white">
+                    <img src="ujjain.jpg" 
+                         alt="Ujjain Trip" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Spiritual Journey to Ujjain</h3>
+                        <p class="text-gray-600 text-sm">May 2025</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white">
+                    <img src="Goas.jpg" 
+                         alt="Goa Trip" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Goa Vibes Tour</h3>
+                        <p class="text-gray-600 text-sm">January 2025</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white">
+                    <img src="kokantrip.jpg" 
+                         alt="Kokan Trip" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Konkan Coastal Trip</h3>
+                        <p class="text-gray-600 text-sm">December 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white">
+                    <img src="dwarka.jpg" 
+                         alt="Dwarka Trip" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Dwarka–Somnath Gujarat Darshan</h3>
+                        <p class="text-gray-600 text-sm">November 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white">
+                    <img src="shimla.jpg" 
+                         alt="Manali Trip" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Manali–Shimla Hill Adventure</h3>
+                        <p class="text-gray-600 text-sm">October 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md bg-white">
+                    <img src="shirdi.jpg" 
+                         alt="Shirdi Trip" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1"> Shirdi Sai Darshan</h3>
+                        <p class="text-gray-600 text-sm">September 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- slide show -->
+     <section id="customer-slides" class="py-10 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-secondary mb-4">Customer Travel Moments</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Block 1 -->
+      <div>
+        <img id="slideshow1" src="dwarka1.jpg" alt="Trip 1" class="rounded-lg w-full shadow-md border-4 border-white">
+      </div>
+
+      <!-- Block 2 -->
+      <div>
+        <img id="slideshow2" src="kokantrip.jpg" alt="Trip 2" class="rounded-lg w-full shadow-md border-4 border-white">
+      </div>
+
+      <!-- Block 3 -->
+      <div>
+        <img id="slideshow3" src="kokanfinal.jpg" alt="Trip 3" class="rounded-lg w-full shadow-md border-4 border-white">
+      </div>
+
+    </div>
+  </div>
+</section>
+    <!-- Upcoming Tours Section -->
+    <section id="tours" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-secondary mb-4">Upcoming Tours</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Book your seat for these exciting upcoming journeys.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tour 1 -->
+                <div class="tour-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 transition duration-300">
+                    <div class="relative">
+                        <img src="ujjain.jpg" 
+                             alt="Ujjain Trip" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-primary text-white text-sm font-bold px-3 py-1 rounded-full">
+                            ₹2999/person
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-bus text-primary mr-2"></i>
+                            <h3 class="text-xl font-bold">3-Day Ujjain Trip</h3>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-3">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Aug 10–12, 2025</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>Seats Left: 8</span>
+                        </div>
+                        <p class="text-gray-600 mb-5">
+                            Experience the spiritual journey to Ujjain's famous Mahakaleshwar Temple and other sacred sites.
+                        </p>
+                        <div class="flex flex-col space-y-3">
+                            <a href="tel:+919145112211" class="bg-primary hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-center transition duration-300">
+                                <i class="fas fa-phone mr-2"></i> Call to Book
+                            </a>
+                            <a href="https://wa.me/919145112211" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded text-center transition duration-300">
+                                <i class="fab fa-whatsapp mr-2"></i> WhatsApp to Book
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tour 2 -->
+                <div class="tour-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 transition duration-300">
+                    <div class="relative">
+                        <img src="Goas.jpg" 
+                             alt="Goa Trip" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-primary text-white text-sm font-bold px-3 py-1 rounded-full">
+                            ₹4999/person
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-bus text-primary mr-2"></i>
+                            <h3 class="text-xl font-bold">5-Day Goa Trip</h3>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-3">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Sep 15–19, 2025</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>Seats Left: 12</span>
+                        </div>
+                        <p class="text-gray-600 mb-5">
+                            Enjoy the beaches, nightlife, and Portuguese heritage of Goa in this exciting 5-day tour.
+                        </p>
+                        <div class="flex flex-col space-y-3">
+                            <a href="tel:+919145112211" class="bg-primary hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-center transition duration-300">
+                                <i class="fas fa-phone mr-2"></i> Call to Book
+                            </a>
+                            <a href="https://wa.me/919145112211" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded text-center transition duration-300">
+                                <i class="fab fa-whatsapp mr-2"></i> WhatsApp to Book
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tour 3 -->
+                <div class="tour-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 transition duration-300">
+                    <div class="relative">
+                        <img src="dwarka.jpg" 
+                             alt="Dwarka Trip" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-primary text-white text-sm font-bold px-3 py-1 rounded-full">
+                            ₹6999/person
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-bus text-primary mr-2"></i>
+                            <h3 class="text-xl font-bold">6-Day Dwarka Darshan Tour</h3>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-3">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>Oct 5–6, 2025</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>Seats Left: 5</span>
+                        </div>
+                        <p class="text-gray-600 mb-5">
+                            Experience spiritual peace at the holy Dwarkadhish Temple on our 6-day Dwarka Darshan with Om Sai Travels.
+                        </p>
+                        <div class="flex flex-col space-y-3">
+                            <a href="tel:+919876543210" class="bg-primary hover:bg-orange-700 text-white font-bold py-2 px-4 rounded text-center transition duration-300">
+                                <i class="fas fa-phone mr-2"></i> Call to Book
+                            </a>
+                            <a href="https://wa.me/919145112211" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded text-center transition duration-300">
+                                <i class="fab fa-whatsapp mr-2"></i> WhatsApp to Book
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="urbania1.jpeg" 
+                         alt="Om Sai Travels Bus" 
+                         class="rounded-lg shadow-lg w-full border-4 border-white">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-secondary mb-6">About Om Sai Travels</h2>
+                    <p class="text-gray-600 mb-6">
+                        Om Sai Travels is a trusted travel service based in Nashik, offering safe and comfortable group tours across India with our luxury 17-seater Force Urbania.
+Book your ride now and make every journey smooth, joyful, and memorable with Om Sai Travels!
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        From Nashik to all over India, we cover spiritual trips, family tours, and more — all with comfort, cleanliness, and a professional drivers:
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-600">Fully air-conditioned cabin</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-600">Comfortable pushback seats with ample legroom</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-600">Experienced and professional drivers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-600">Clean and well-maintained vehicle</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-600">On-time service and reliable operations</span>
+                        </li>
+                    </ul>
+                    <div class="bg-primary bg-opacity-10 p-4 rounded-lg border-l-4 border-primary">
+                        <p class="text-gray-700 italic">
+                            "Our mission is to provide comfortable, safe, and memorable travel experiences at affordable prices."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-secondary mb-12">What Our Customers Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="vijay.png" 
+                             alt="Customer" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Vijay Lahamge</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The Ujjain trip was amazing! The bus was very comfortable and the driver was professional. Will definitely travel with Om Sai Travels again."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="saurabh.png" 
+                             alt="Customer" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Saurabh Shinde</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Excellent service! The AC worked perfectly even in peak summer. The seats were very comfortable for long journeys."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="ashwini.png" 
+                             alt="Customer" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Ashwini Jadhav</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Took my family to Shirdi with Om Sai Travels. The driver was very careful and the bus was clean. Highly recommended for family trips."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-secondary mb-4">Contact Us</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Get in touch to book your next journey or inquire about our services.</p>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-6 text-gray-800">Send Us a Message</h3>
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                                       required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="mobile" class="block text-gray-700 mb-2">Mobile Number</label>
+                                <input type="tel" id="mobile" name="mobile" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                                       required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="destination" class="block text-gray-700 mb-2">Destination</label>
+                                <input type="text" id="destination" name="destination" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                                       required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="passengers" class="block text-gray-700 mb-2">Number of Passengers</label>
+                                <input type="number" id="passengers" name="passengers" min="1" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" 
+                                       required>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                                Send Inquiry
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white p-6 rounded-lg shadow-sm h-full">
+                        <h3 class="text-xl font-semibold mb-6 text-gray-800">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Our Location</h4>
+                                    <p class="text-gray-600">Nashik, Maharashtra, India</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Call Us</h4>
+                                    <a href="tel:+919145112211 or +919881182549" class="text-gray-600 hover:text-primary transition">+919145112211 /+919881182549</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fab fa-whatsapp text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">WhatsApp</h4>
+                                    <a href="https://wa.me/919145112211" class="text-gray-600 hover:text-primary transition">+91 9881182549</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Working Hours</h4>
+                                    <p class="text-gray-600">Monday–Sunday: 24/7 Available (Call Anytime)
+
+</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-3">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center text-gray-700 transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center text-gray-700 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-gray-100 hover:bg-primary hover:text-white w-10 h-10 rounded-full flex items-center justify-center text-gray-700 transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-bus text-white text-2xl"></i>
+                        <span class="text-xl font-bold">Om Sai Travels</span>
+                    </div>
+                    <p class="mt-2 text-gray-300">Experience Comfortable Group Travel Across India with Om Sai Travels</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        &copy; 2025 Om Sai Travels. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert('Thank you for your inquiry! We will contact you shortly.');
+            this.reset();
+        });
+
+        // Highlight active navigation link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <!-- JavaScript slideshow code -->
+    <script>
+        const images = [
+            "images/bus1.jpg",
+            "images/bus2.jpg",
+            "images/bus3.jpg",
+            "images/bus4.jpg",
+            "images/bus5.jpg",
+            "images/bus6.jpg"
+        ];
+
+        let currentIndex = 0;
+        const imgElement = document.getElementById("slideshow");
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            imgElement.src = images[currentIndex];
+        }, 3000);
+    </script>
+    <script>
+  // Slideshow 1
+  const images1 = ["img1.jpg", "img2.jpg", "img3.jpg"];
+  let index1 = 0;
+  setInterval(() => {
+    index1 = (index1 + 1) % images1.length;
+    document.getElementById("slideshow1").src = images1[index1];
+  }, 2000);
+
+  // Slideshow 2
+  const images2 = ["img4.jpg", "img5.jpg", "img6.jpg"];
+  let index2 = 0;
+  setInterval(() => {
+    index2 = (index2 + 1) % images2.length;
+    document.getElementById("slideshow2").src = images2[index2];
+  }, 2000);
+
+  // Slideshow 3
+  const images3 = ["img7.jpg", "img8.jpg", "img9.jpg"];
+  let index3 = 0;
+  setInterval(() => {
+    index3 = (index3 + 1) % images3.length;
+    document.getElementById("slideshow3").src = images3[index3];
+  }, 2000);
+</script>
+</body>
+</html>
+</body>
+</html>
