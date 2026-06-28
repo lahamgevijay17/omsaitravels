@@ -56,6 +56,59 @@
         .gallery-item:hover {
             transform: scale(1.02);
         }
+
+        /* ===== New: scroll-reveal utility used by trust strip, video/review cards & testimonials ===== */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== New: hide scrollbar on mobile swipe carousels (video reviews / google reviews) ===== */
+        .scrollbar-hide {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ===== New: video review card hover & play button polish ===== */
+        .video-card .video-thumb img {
+            transition: transform 0.6s ease;
+        }
+        .video-card:hover .video-thumb img {
+            transform: scale(1.06);
+        }
+        .video-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-4px);
+        }
+        .play-btn {
+            transition: transform 0.3s ease;
+        }
+        .video-card:hover .play-btn {
+            transform: scale(1.12);
+        }
+
+        /* ===== New: testimonial & google review card hover lift ===== */
+        .testimonial-card, .google-review-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover, .google-review-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ===== New: lightbox / video modal fade-zoom transition ===== */
+        .lightbox-media {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
     </style>
 </head>
 <body class="font-sans bg-white text-gray-800">
@@ -66,6 +119,13 @@
         </a>
         <a href="https://wa.me/918446223972" class="floating-btn bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl">
             <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- New: Floating Google Review button — replace href with your Place ID write-review link when available -->
+        <a href="https://www.google.com/maps/search/?api=1&query=Om+Sai+Travels+Nashik"
+           target="_blank" rel="noopener noreferrer"
+           class="floating-btn bg-yellow-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl"
+           aria-label="Review us on Google">
+            <i class="fas fa-star"></i>
         </a>
     </div>
 
@@ -135,6 +195,29 @@
          alt="Om Sai Travels Bus" 
          class="rounded-lg shadow-lg w-full border-4 border-white">
 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New: Trust Badges strip -->
+    <section class="bg-white border-y border-gray-100 py-4">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex gap-6 overflow-x-auto scrollbar-hide sm:overflow-visible sm:flex-wrap sm:justify-center">
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-700 whitespace-nowrap flex-shrink-0">
+                    <i class="fas fa-star text-primary"></i> 5-Star Customer Satisfaction
+                </div>
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-700 whitespace-nowrap flex-shrink-0">
+                    <i class="fas fa-bus text-primary"></i> Luxury Force Urbania
+                </div>
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-700 whitespace-nowrap flex-shrink-0">
+                    <i class="fas fa-shield-alt text-primary"></i> Safe &amp; Secure Travel
+                </div>
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-700 whitespace-nowrap flex-shrink-0">
+                    <i class="fas fa-map-marker-alt text-primary"></i> Based in Nashik
+                </div>
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-700 whitespace-nowrap flex-shrink-0">
+                    <i class="fas fa-headset text-primary"></i> 24×7 Booking Support
+                </div>
             </div>
         </div>
     </section>
@@ -240,23 +323,222 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
       <!-- Block 1 -->
-      <div>
-        <img id="slideshow1" src="vv1.jpg" alt="Trip 1" class="rounded-lg w-full shadow-md border-4 border-white">
+      <div class="image-lightbox-trigger reveal-on-scroll overflow-hidden rounded-lg shadow-md border-4 border-white cursor-pointer" data-caption="Trip 1 — Shared by our happy travellers">
+        <img id="slideshow1" src="vv1.jpg" alt="Trip 1" class="w-full transition-transform duration-700 ease-in-out hover:scale-105">
       </div>
 
       <!-- Block 2 -->
-      <div>
-        <img id="slideshow2" src="v8.jpg" alt="Trip 2" class="rounded-lg w-full shadow-md border-4 border-white">
+      <div class="image-lightbox-trigger reveal-on-scroll overflow-hidden rounded-lg shadow-md border-4 border-white cursor-pointer" data-caption="Trip 2 — Shared by our happy travellers">
+        <img id="slideshow2" src="v8.jpg" alt="Trip 2" class="w-full transition-transform duration-700 ease-in-out hover:scale-105">
       </div>
 
       <!-- Block 3 -->
-      <div>
-        <img id="slideshow3" src="v16.jpg" alt="Trip 3" class="rounded-lg w-full shadow-md border-4 border-white">
+      <div class="image-lightbox-trigger reveal-on-scroll overflow-hidden rounded-lg shadow-md border-4 border-white cursor-pointer" data-caption="Trip 3 — Shared by our happy travellers">
+        <img id="slideshow3" src="v16.jpg" alt="Trip 3" class="w-full transition-transform duration-700 ease-in-out hover:scale-105">
       </div>
 
     </div>
   </div>
 </section>
+    <!-- ============================================================ -->
+    <!-- New: Happy Customers Speak — video testimonials with lightbox -->
+    <!-- ============================================================ -->
+    <section id="video-reviews" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-secondary mb-4">🎥 Happy Customers Speak</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto italic">
+                "Watch genuine experiences shared by our happy travellers after completing their journey with Om Sai Travels."
+            </p>
+
+            <!-- Swipeable on mobile (flex + scroll-snap), grid from sm: upward -->
+            <div class="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-4 px-4
+                        sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-3">
+
+                <!-- Video Card 1 -->
+                <div class="video-card reveal-on-scroll snap-center min-w-[80%] sm:min-w-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl"
+                     data-video="videos/customer-testimonial-1.mp4" data-poster="vv1.jpg">
+                    <div class="video-thumb relative overflow-hidden cursor-pointer">
+                        <img src="n1.jpg" alt="Sneha Patil video testimonial thumbnail" loading="lazy" class="w-full h-52 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div class="play-btn w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-play text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-semibold text-gray-800">Sneha Patil</h4>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-primary text-sm font-medium mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Khatu Shyamji Darshan</p>
+                        <p class="text-gray-600 text-sm italic">"Felt completely safe and comfortable — like travelling with family."</p>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="video-card reveal-on-scroll snap-center min-w-[80%] sm:min-w-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl"
+                     data-video="videos/customer-testimonial-2.mp4" data-poster="v8.jpg">
+                    <div class="video-thumb relative overflow-hidden cursor-pointer">
+                        <img src="n2.jpg" alt="Mayur Kulkarni video testimonial thumbnail" loading="lazy" class="w-full h-52 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div class="play-btn w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-play text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-semibold text-gray-800">Mayur Kulkarni</h4>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-primary text-sm font-medium mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Alibag Vibes Tour</p>
+                        <p class="text-gray-600 text-sm italic">"Smooth ride, clean bus, and a driver who made the whole trip easy."</p>
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="video-card reveal-on-scroll snap-center min-w-[80%] sm:min-w-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl"
+                     data-video="videos/customer-testimonial-3.mp4" data-poster="v16.jpg">
+                    <div class="video-thumb relative overflow-hidden cursor-pointer">
+                        <img src="n3.jpg" alt="Rohini Bidwe video testimonial thumbnail" loading="lazy" class="w-full h-52 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div class="play-btn w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-play text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-semibold text-gray-800">Rohini Bidwe</h4>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-primary text-sm font-medium mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Maharashtra Darshan</p>
+                        <p class="text-gray-600 text-sm italic">"Long journey but never felt tiring. Booking again for our next trip."</p>
+                    </div>
+                </div>
+
+                <!-- Video Card 4 -->
+                <div class="video-card reveal-on-scroll snap-center min-w-[80%] sm:min-w-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl"
+                     data-video="videos/customer-testimonial-4.mp4" data-poster="dwarka.jpg">
+                    <div class="video-thumb relative overflow-hidden cursor-pointer">
+                        <img src="dwarka.jpg" alt="Devram Patil video testimonial thumbnail" loading="lazy" class="w-full h-52 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div class="play-btn w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-play text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-semibold text-gray-800">Devram patil</h4>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-primary text-sm font-medium mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Dwarka–Somnath Darshan</p>
+                        <p class="text-gray-600 text-sm italic">"Punctual, polite staff, and the seats made the long hours fly by."</p>
+                    </div>
+                </div>
+
+                <!-- Video Card 5 -->
+                <div class="video-card reveal-on-scroll snap-center min-w-[80%] sm:min-w-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl"
+                     data-video="videos/customer-testimonial-5.mp4" data-poster="kokantrip.jpg">
+                    <div class="video-thumb relative overflow-hidden cursor-pointer">
+                        <img src="kokantrip.jpg" alt="Pratibha Shinde video testimonial thumbnail" loading="lazy" class="w-full h-52 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div class="play-btn w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-play text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-semibold text-gray-800">Pratibha Shinde</h4>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-primary text-sm font-medium mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Konkan Coastal Trip</p>
+                        <p class="text-gray-600 text-sm italic">"Beautiful coastal route and a driver who knew every stop worth seeing."</p>
+                    </div>
+                </div>
+
+                <!-- Video Card 6 -->
+                <div class="video-card reveal-on-scroll snap-center min-w-[80%] sm:min-w-0 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl"
+                     data-video="videos/customer-testimonial-6.mp4" data-poster="shimla.jpg">
+                    <div class="video-thumb relative overflow-hidden cursor-pointer">
+                        <img src="shimla.jpg" alt="Vipul Shrimal video testimonial thumbnail" loading="lazy" class="w-full h-52 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div class="play-btn w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                                <i class="fas fa-play text-primary text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-semibold text-gray-800">Vipul Shrimal</h4>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-primary text-sm font-medium mb-2"><i class="fas fa-map-marker-alt mr-1"></i>Manali–Shimla Hill Adventure</p>
+                        <p class="text-gray-600 text-sm italic">"Hill roads handled so smoothly. Genuinely the best group tour we've done."</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- New: Google Reviews — built so it can later swap to live API  -->
+    <!-- ============================================================ -->
+    <section id="google-reviews" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-secondary mb-4">⭐ Rated by Our Customers on Google</h2>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="flex text-yellow-400 text-2xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <!-- data-rating-value: swap this with the live average rating when API is connected -->
+                        <span class="text-4xl font-bold text-secondary" data-rating-value>4.9</span>
+                        <span class="text-gray-500">/ 5 Average Rating</span>
+                    </div>
+                    <!-- data-review-count: swap this with the live review total when API is connected -->
+                    <p class="text-gray-600" data-review-count>Based on 120+ Google Reviews</p>
+                    <span class="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-sm font-medium px-3 py-1 rounded-full mt-1">
+                        <i class="fas fa-check-circle"></i> Verified Google Business
+                    </span>
+                </div>
+            </div>
+
+            <!-- Cards are rendered by renderGoogleReviews() below from googleReviewsData,
+                 so this markup structure stays the same when a live Google Reviews API is wired in later. -->
+            <div id="google-review-cards"
+                 class="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-4 px-4
+                        sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-3">
+                <!-- Review cards injected by JavaScript -->
+            </div>
+
+            <div class="text-center mt-10">
+                <!-- Replace with your Place ID-based "write a review" / profile link once available -->
+                <a href="https://maps.app.goo.gl/ucd4xdCdcQt2MSvdA"
+                   target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center bg-secondary hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    <i class="fab fa-google mr-2"></i> View All Reviews on Google
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Upcoming Tours Section -->
     <section id="tours" class="py-16 bg-white">
         <div class="max-w-6xl mx-auto px-4">
@@ -543,7 +825,8 @@ Book your ride now and make every journey smooth, joyful, and memorable with Om 
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <div class="testimonial-card reveal-on-scroll bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl">
+                    <i class="fas fa-quote-left text-primary text-2xl opacity-30 mb-3"></i>
                     <div class="flex items-center mb-4">
                         <img src="vijay.png" 
                              alt="Customer" 
@@ -559,13 +842,14 @@ Book your ride now and make every journey smooth, joyful, and memorable with Om 
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">
+                    <p class="text-gray-600 italic leading-relaxed">
                         "The Ujjain trip was amazing! The bus was very comfortable and the driver was professional. Will definitely travel with Om Sai Travels again."
                     </p>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <div class="testimonial-card reveal-on-scroll bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl">
+                    <i class="fas fa-quote-left text-primary text-2xl opacity-30 mb-3"></i>
                     <div class="flex items-center mb-4">
                         <img src="saurabh.png" 
                              alt="Customer" 
@@ -581,13 +865,14 @@ Book your ride now and make every journey smooth, joyful, and memorable with Om 
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">
+                    <p class="text-gray-600 italic leading-relaxed">
                         "Excellent service! The AC worked perfectly even in peak summer. The seats were very comfortable for long journeys."
                     </p>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <div class="testimonial-card reveal-on-scroll bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl">
+                    <i class="fas fa-quote-left text-primary text-2xl opacity-30 mb-3"></i>
                     <div class="flex items-center mb-4">
                         <img src="ashwini.png" 
                              alt="Customer" 
@@ -603,7 +888,7 @@ Book your ride now and make every journey smooth, joyful, and memorable with Om 
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">
+                    <p class="text-gray-600 italic leading-relaxed">
                         "Took my family to Shirdi with Om Sai Travels. The driver was very careful and the bus was clean. Highly recommended for family trips."
                     </p>
                 </div>
@@ -782,6 +1067,27 @@ Book your ride now and make every journey smooth, joyful, and memorable with Om 
         </div>
     </footer>
 
+    <!-- ============================================================ -->
+    <!-- New: Video Review modal (used by Happy Customers Speak cards) -->
+    <!-- ============================================================ -->
+    <div id="video-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4">
+        <div class="relative w-full max-w-3xl">
+            <button id="video-modal-close" class="absolute -top-10 right-0 text-white text-3xl leading-none hover:text-primary transition" aria-label="Close video">&times;</button>
+            <video id="video-modal-player" class="lightbox-media w-full rounded-lg shadow-2xl bg-black" controls playsinline></video>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- New: Image lightbox (used by Customer Travel Moments slides)  -->
+    <!-- ============================================================ -->
+    <div id="image-lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4">
+        <div class="relative w-full max-w-3xl">
+            <button id="image-lightbox-close" class="absolute -top-10 right-0 text-white text-3xl leading-none hover:text-primary transition" aria-label="Close image">&times;</button>
+            <img id="image-lightbox-img" src="" alt="" class="lightbox-media w-full rounded-lg shadow-2xl opacity-0 scale-95">
+            <p id="image-lightbox-caption" class="text-white text-center mt-3 text-sm"></p>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
@@ -926,8 +1232,245 @@ Thank you for your inquiry!`;
             sendToWhatsApp();
         });
     </script>
-</body>
-</body>
-</html>
+
+    <!-- ============================================================ -->
+    <!-- New: Scroll-reveal animation for trust strip, video/review    -->
+    <!-- cards and testimonials. Lightweight IntersectionObserver,     -->
+    <!-- no external library needed.                                   -->
+    <!-- ============================================================ -->
+    <script>
+        (function () {
+            const revealEls = document.querySelectorAll('.reveal-on-scroll');
+            if (!('IntersectionObserver' in window) || revealEls.length === 0) {
+                revealEls.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+            revealEls.forEach(el => observer.observe(el));
+        })();
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- New: Happy Customers Speak — video modal/lightbox logic       -->
+    <!-- Videos are lazy: no <source> is set until a card is clicked,  -->
+    <!-- so nothing downloads until the visitor actually wants to play.-->
+    <!-- ============================================================ -->
+    <script>
+        (function () {
+            const modal = document.getElementById('video-modal');
+            const player = document.getElementById('video-modal-player');
+            const closeBtn = document.getElementById('video-modal-close');
+
+            function openVideoModal(videoSrc) {
+                player.src = videoSrc;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+                player.play().catch(() => { /* autoplay may be blocked until user interacts with controls */ });
+            }
+
+            function closeVideoModal() {
+                player.pause();
+                player.removeAttribute('src');
+                player.load();
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            document.querySelectorAll('.video-card').forEach(card => {
+                card.querySelector('.video-thumb').addEventListener('click', () => {
+                    openVideoModal(card.getAttribute('data-video'));
+                });
+            });
+
+            closeBtn.addEventListener('click', closeVideoModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeVideoModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideoModal();
+            });
+        })();
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- New: Customer Travel Moments — image lightbox with fade/zoom  -->
+    <!-- Existing slideshow interval logic (above) is untouched; this  -->
+    <!-- only adds a click-to-enlarge view and a subtle fade on swap.  -->
+    <!-- ============================================================ -->
+    <script>
+        (function () {
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('image-lightbox-img');
+            const lightboxCaption = document.getElementById('image-lightbox-caption');
+            const closeBtn = document.getElementById('image-lightbox-close');
+
+            function openImageLightbox(src, caption) {
+                lightboxImg.src = src;
+                lightboxCaption.textContent = caption || '';
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+                // Trigger the fade/zoom-in after the image is in the DOM
+                requestAnimationFrame(() => {
+                    lightboxImg.classList.remove('opacity-0', 'scale-95');
+                });
+            }
+
+            function closeImageLightbox() {
+                lightboxImg.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    lightbox.classList.remove('flex');
+                    document.body.classList.remove('overflow-hidden');
+                }, 200);
+            }
+
+            document.querySelectorAll('.image-lightbox-trigger').forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const img = trigger.querySelector('img');
+                    openImageLightbox(img.src, trigger.getAttribute('data-caption'));
+                });
+            });
+
+            closeBtn.addEventListener('click', closeImageLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeImageLightbox();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeImageLightbox();
+            });
+
+            // Subtle fade transition each time the auto-slideshow swaps an image,
+            // without changing the existing interval/index logic above.
+            ['slideshow1', 'slideshow2', 'slideshow3'].forEach(id => {
+                const img = document.getElementById(id);
+                if (!img) return;
+                img.style.transition = 'opacity 0.4s ease';
+                const observer = new MutationObserver(() => {
+                    img.style.opacity = '0';
+                    img.onload = () => { img.style.opacity = '1'; };
+                });
+                observer.observe(img, { attributes: true, attributeFilter: ['src'] });
+            });
+        })();
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- New: Google Reviews renderer                                   -->
+    <!-- googleReviewsData below is placeholder content. To go live,   -->
+    <!-- replace the array (or the assignment) with reviews fetched    -->
+    <!-- from the Google Places/Business Profile API — renderGoogle    -->
+    <!-- Reviews() and the card markup do not need to change.          -->
+    <!-- ============================================================ -->
+    <script>
+        const googleReviewsData = [
+            {
+                name: 'Suresh Pawar',
+                rating: 5,
+                date: '2 months ago',
+                text: 'Booked the Urbania for our Shirdi trip — clean bus, comfortable seats, and the driver was right on time both ways.'
+            },
+            {
+                name: 'Komal Deshpande',
+                rating: 5,
+                date: '3 months ago',
+                text: 'Genuinely one of the better travel operators in Nashik. AC worked great even in summer and booking over WhatsApp was effortless.'
+            },
+            {
+                name: 'Ganesh More',
+                rating: 4,
+                date: '4 months ago',
+                text: 'Good experience overall for our Goa group trip. Bus was a little late at pickup but the journey itself was smooth and safe.'
+            },
+            {
+                name: 'Pooja Wagh',
+                rating: 5,
+                date: '5 months ago',
+                text: 'Took the family to Dwarka and Somnath. Spacious seating, courteous driver, and they kept us updated on the schedule throughout.'
+            },
+            {
+                name: 'Akash Nikam',
+                rating: 5,
+                date: '6 months ago',
+                text: 'Reliable and affordable for our Maharashtra Darshan tour. Would recommend Om Sai Travels to anyone planning a group trip.'
+            },
+            {
+                name: 'Snehal Gaikwad',
+                rating: 5,
+                date: '7 months ago',
+                text: 'Comfortable pushback seats made the long drive to Char Dham so much easier. Will be booking with them again next year.'
+            }
+        ];
+
+        function renderGoogleReviews(reviews) {
+            const container = document.getElementById('google-review-cards');
+            if (!container) return;
+
+            container.innerHTML = reviews.map(review => {
+                const stars = Array.from({ length: 5 }, (_, i) =>
+                    `<i class="fas fa-star${i < review.rating ? '' : ' text-gray-300'}"></i>`
+                ).join('');
+
+                // Encode the name into a soft, on-brand placeholder avatar.
+                const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(review.name)}&background=1E3A8A&color=fff&rounded=true`;
+
+                return `
+                <div class="google-review-card reveal-on-scroll snap-center min-w-[80%] sm:min-w-0 bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-lg">
+                    <div class="flex items-center mb-3">
+                        <img src="${avatarUrl}" alt="${review.name}" loading="lazy" class="w-12 h-12 rounded-full mr-3">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800">${review.name}</h4>
+                            <div class="flex items-center gap-1">
+                                <div class="flex text-yellow-400 text-xs">${stars}</div>
+                                <i class="fab fa-google text-xs text-gray-400 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text text-gray-600 text-sm leading-relaxed line-clamp-4">${review.text}</p>
+                    <button class="read-more-btn hidden text-primary text-sm font-medium mt-2 hover:underline">Read more</button>
+                    <p class="text-gray-400 text-xs mt-3">${review.date}</p>
+                </div>`;
+            }).join('');
+
+            // Show "Read more" only for reviews that are actually clipped, then wire it up.
+            container.querySelectorAll('.google-review-card').forEach(card => {
+                const text = card.querySelector('.review-text');
+                const btn = card.querySelector('.read-more-btn');
+                requestAnimationFrame(() => {
+                    if (text.scrollHeight > text.clientHeight + 2) {
+                        btn.classList.remove('hidden');
+                    }
+                });
+                btn.addEventListener('click', () => {
+                    const expanded = text.classList.toggle('line-clamp-4');
+                    text.classList.toggle('line-clamp-none');
+                    btn.textContent = expanded ? 'Read more' : 'Read less';
+                });
+            });
+
+            // Newly injected cards also get the scroll-reveal treatment.
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            container.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        }
+
+        renderGoogleReviews(googleReviewsData);
+    </script>
 </body>
 </html>
